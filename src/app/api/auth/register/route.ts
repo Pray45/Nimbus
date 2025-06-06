@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
         if( !name || !email || !password ) return NextResponse.json({message: "Please Enter feilds properly"} , { status: 400 })
         
-        await DataBaseConnection();
+        await DataBaseConnection()
 
         const isExisting = await User.findOne({email})
 
@@ -27,6 +27,5 @@ export async function POST(req: NextRequest) {
     } catch (error) {
         console.error("Register error:", error);
         return NextResponse.json({message: "error in registering user", error} , {status : 400})
-
     }
 }
