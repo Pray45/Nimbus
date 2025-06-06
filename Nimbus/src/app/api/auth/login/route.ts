@@ -4,7 +4,7 @@ import User from "@/models/User";
 import { DataBaseConnection } from "@/lib/DB";
 
 export async function POST( req: NextRequest ) {
-
+    
     const { email, password } = await req.json()
 
     if( !email || !password) return NextResponse.json({ message: "Enter the fields properly "} , { status: 400})
@@ -13,7 +13,7 @@ export async function POST( req: NextRequest ) {
 
     const user = await User.findOne({email})
 
-    if(!user) return NextResponse.json({message: "Please Login first.."} , {status: 400})
+    if(!user) return NextResponse.json({message: "email not found.."} , {status: 400})
 
     const isMatch = await user.comparePassword(password)
 
