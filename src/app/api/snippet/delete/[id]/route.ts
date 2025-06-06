@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { DataBaseConnection } from "@/lib/DB";
 import Snippet from "@/models/Snippet";
 
-export async function DELETE( req:NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_req:NextRequest, { params }: { params: { id: string } }) {
     try {
 
         await DataBaseConnection()

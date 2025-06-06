@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import Snippet from "@/models/Snippet";
 import { DataBaseConnection } from "@/lib/DB";
 
-export async function GET(req:NextRequest) {
+export async function GET() {
 
     try {
 
