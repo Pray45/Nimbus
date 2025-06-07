@@ -11,6 +11,9 @@ const Login = () => {
   const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
 
+  
+  if(localStorage.getItem("token")) {window.location.href = "/"}
+
   const submithandler = async(e: React.FormEvent) =>{
     
     e.preventDefault()
@@ -21,6 +24,7 @@ const Login = () => {
       const res = await axios.post("/api/auth/login", {email,password} )
 
       if (res.status === 200) {
+        window.localStorage.setItem("token", res.data.token )
         window.location.href = "/"
       }
 
@@ -39,12 +43,14 @@ const Login = () => {
     
   }
 
+  
+
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden flex justify-center items-center">
 
       {loading && (
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
-        <span className="text-[#00FF9C] text-xl font-semibold animate-pulse">Registering...</span>
+      <div className="absolute min-h-screen max-h-screen w-full bg-black/80 backdrop-blur-md flex items-center justify-center z-50">
+        <span className="text-[#00FF9C] text-xl font-semibold animate-pulse">Logging in...</span>
       </div>
       )}
 
