@@ -24,12 +24,15 @@ const Login = () => {
         window.location.href = "/"
       }
 
-    } catch (err: any) {
+    } catch (err: unknown) {
 
       console.error(err)
-      const msg = err?.response?.data?.message || "login failed."
-      alert(msg)
-
+      
+      if (err instanceof Error) {
+          console.error(err.message);
+          alert(err.message)
+      }
+        
     } finally {
       setLoading(false)
     }

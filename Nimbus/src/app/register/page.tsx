@@ -28,14 +28,19 @@ const Register = () => {
         alert("Registration successful!")
         window.location.href = "/login"
       }
-    } catch (err: any) {
-      console.error(err)
-      const msg = err?.response?.data?.message || "Registration failed."
-      alert(msg)
-    } finally {
-      setLoading(false)
-    }
 
+    } catch (err: unknown) {
+
+      console.error(err)
+      
+      if (err instanceof Error) {
+          console.error(err.message);
+          alert(err.message)
+      }
+        
+      } finally {
+        setLoading(false)
+      }
   }
 
   return (
