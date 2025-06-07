@@ -11,9 +11,6 @@ const Login = () => {
   const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
 
-  
-  if(localStorage.getItem("token")) {window.location.href = "/"}
-
   const submithandler = async(e: React.FormEvent) =>{
     
     e.preventDefault()
@@ -43,7 +40,10 @@ const Login = () => {
     
   }
 
-  
+  if (typeof window !== "undefined" && localStorage.getItem("token")) {
+    window.location.href = "/"
+    alert("do not play with routes nigga")
+  }
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden flex justify-center items-center">

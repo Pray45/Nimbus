@@ -18,16 +18,12 @@ const Register = () => {
     setLoading(true)
 
     try {
-      const res = await axios.post("/api/auth/register", {
-        name,
-        email,
-        password
-      })
-
-      if (res.status === 200) {
-        alert("Registration successful!")
-        window.location.href = "/login"
-      }
+      
+    await axios.post("/api/auth/register", {
+      name,
+      email,
+      password
+    })
 
     } catch (err: unknown) {
 
@@ -43,7 +39,10 @@ const Register = () => {
       }
   }
 
-  if(localStorage.getItem("token")) {window.location.href = "/"; alert("dont play with routes nigga")}
+  if (typeof window !== "undefined" && localStorage.getItem("token")) {
+    window.location.href = "/"
+    alert("do not play with routes nigga")
+  }
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden flex justify-center items-center">
