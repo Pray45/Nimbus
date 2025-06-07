@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const uri = process.env.MONGODB_URI!
-if(!uri) throw new Error('please check "MONGODB_URI" in .emv file...!!!')
+if(!uri) throw new Error('please check "MONGODB_URI" in .env file...!!!')
 
 let cache = global.mongoose
 if(!cache) cache = global.mongoose = {conn: null , promise: null}
