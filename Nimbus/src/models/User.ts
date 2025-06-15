@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 
 export interface IUser {
     name : string;
+    _id : string;
     email : string;
     password: string;
     role: string;
